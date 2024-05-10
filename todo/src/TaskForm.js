@@ -1,32 +1,32 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import List from '@mui/material/List';
 
-
-class  TasckForm extends React.Component{
+class  TaskForm extends React.Component{
   
        constructor(props){
+       
        super(props);
-           this.state = {
-           task: ""
+       this.state = {
+	       task: ""
        };
   }
  
  render(){
   return (
     <form>
-     <p><TextField variant="standard" type="text" value={this.state.task} onChange=    {event => {
+     <p><TextField variant="standard" type="text" value={this.state.task} placeholder="Nueva Tarea" onChange={event => {
  
           this.setState({
              task:event.target.value
           });
- 
-          }} placeholder="Nueva Tarea"/></p>
- 
-          <Button variant="contained" type="button" onClick={() => {
-          if (this.state.task.trim() == ""){
+ 	}}/>
+        <Button variant="contained" type="button" onClick={() => {
+
+	      if (this.state.task.trim() === ""){
               this.setSatate({
-              task: ""
+              		task: ""
              });
  
               return;
@@ -35,10 +35,10 @@ class  TasckForm extends React.Component{
           this.props.onAddTask(this.state.task);
           this.setState({
               task: ""
-          });
-  }}>+</Button>
-          </form>
-          );
-     }
-  }
- export default TasckForm;
+          	});
+      	}}>+</Button></p>
+      </form>
+        );
+      }
+ }
+export default TaskForm;
